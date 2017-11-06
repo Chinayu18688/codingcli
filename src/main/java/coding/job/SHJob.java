@@ -1,6 +1,7 @@
 package coding.job;
 
 
+import coding.db.ColumnInfo;
 import coding.db.JdbcPojo;
 import coding.db.JdbcUtil;
 import coding.db.TableInfo;
@@ -24,7 +25,17 @@ public class SHJob extends Job{
     public void execJob() throws SQLException {
         super.execJob();
         List<TableInfo> tableInfo=JdbcUtil.getTableInfos(super.connection);
+        Map<String,Object> root=new HashMap<String, Object>();
+        root.put("package","com.buc.epg");
+        root.put("modal","user");
+        root.put("className",tableInfo.get(0).getTableName());
+        List<String> columns=new ArrayList<String>();
+        for(ColumnInfo columnInfo:tableInfo.get(0).getColumnInfos()){
+            columns.add(columnInfo.getColumnName());
+        }
+        root.put("columnList",columns);
+        root.put("upperTableName",tableInfo.get(0).getTableName().toUpperCase());
         //生成pojo
-        FreemarkerUtil.processTemplate("test.flt",null,null);
+        FreemarkerUtil.processTemplate("sh-entity.flt",null,"/Volumes/BANQ/freemakerDir/entity.java",root);
     }
 }

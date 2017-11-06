@@ -1,0 +1,106 @@
+package ${package}.${modal}.entity;
+
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/**
+ * ${className} entity. @author coding cli server
+ */
+@Entity
+@Table(name = "${upperTableName}")
+public class ${className} implements java.io.Serializable {
+
+	// Fields
+    <#if columnList?exists >
+        <#list columnList as column>
+            private String ${column};
+        </#list>
+    </#if>
+
+
+	// Constructors
+
+	/** default constructor */
+	public ${className}() {}
+
+	/** full constructor */
+
+
+	//@GenericGenerator(name = "generator", strategy = "uuid.hex")
+	@Id
+	//@GeneratedValue(generator = "generator")
+	@Column(name = "STB_ID", unique = true, nullable = false, length = 36)
+	public String getStbId() {
+		return this.stbId;
+	}
+
+	public void setStbId(String stbId) {
+		this.stbId = stbId;
+	}
+
+	@Column(name = "USER_ID", length = 100)
+	public String getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	@Column(name = "STB_IP", length = 50)
+	public String getStbIp() {
+		return this.stbIp;
+	}
+
+	public void setStbIp(String stbIp) {
+		this.stbIp = stbIp;
+	}
+
+	@Column(name = "STB_MAC", length = 100)
+	public String getStbMac() {
+		return this.stbMac;
+	}
+
+	public void setStbMac(String stbMac) {
+		this.stbMac = stbMac;
+	}
+
+	@Column(name = "STB_PLATFORM", length = 20)
+	public String getStbPlatform() {
+		return this.stbPlatform;
+	}
+
+	public void setStbPlatform(String stbPlatform) {
+		this.stbPlatform = stbPlatform;
+	}
+
+	@Column(name = "STB_TYPE", length = 20)
+	public String getStbType() {
+		return this.stbType;
+	}
+
+	public void setStbType(String stbType) {
+		this.stbType = stbType;
+	}
+
+	@Column(name = "UPDATE_TIME")
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	@Column(name = "USER_TEL", length = 20)
+	public String getUserTel() {
+		return userTel;
+	}
+
+	public void setUserTel(String userTel) {
+		this.userTel = userTel;
+	}
+}

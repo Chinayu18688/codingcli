@@ -1,9 +1,11 @@
 package coding.db;
 
+import java.io.Serializable;
+
 /**
  * Created by zhangyu on 2017/11/5.
  */
-public class JdbcPojo{
+public class JdbcPojo implements Serializable{
 
     private String dbUrl;
     private String dbDriver;

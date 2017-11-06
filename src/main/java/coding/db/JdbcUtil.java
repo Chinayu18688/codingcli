@@ -26,7 +26,7 @@ public class JdbcUtil {
      * @return
      */
     public static List<TableInfo> getTableInfos(Connection connection) throws SQLException {
-        List<TableInfo> tableNames=new ArrayList<TableInfo>();
+        List<TableInfo> tables=new ArrayList<TableInfo>();
         DatabaseMetaData metaData=connection.getMetaData();
         ResultSet tableRet = metaData.getTables(null, "%","%",new String[]{"TABLE"});
         while(tableRet.next()) {
@@ -35,8 +35,9 @@ public class JdbcUtil {
             tableInfo.setTableType(tableRet.getString("TABLE_TYPE"));
             tableInfo.setColumnInfos(getColumnsInfos(connection,tableInfo.getTableName()));
             System.out.println(tableInfo.toString());
+            tables.add(tableInfo);
         }
-        return tableNames;
+        return tables;
     }
 
     /**
