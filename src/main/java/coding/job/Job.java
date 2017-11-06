@@ -25,6 +25,7 @@ public abstract class Job {
      */
     public Connection getConnection() {
         try {
+            jdbcPojo.toString();
             Class.forName(jdbcPojo.getDbDriver()); // 注册驱动
             connection = DriverManager.getConnection(
                     jdbcPojo.getDbUrl(), jdbcPojo.getDbUsername(), jdbcPojo.getDbPassword()); // 获取连接

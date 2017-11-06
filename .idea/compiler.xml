@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="codingcli" />
         <module name="mrscli" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="codingcli" target="1.5" />
       <module name="mrscli" target="1.8" />
     </bytecodeTargetLevel>
   </component>

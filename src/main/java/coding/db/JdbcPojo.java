@@ -44,4 +44,14 @@ public class JdbcPojo{
     public void setDbPassword(String dbPassword) {
         this.dbPassword = dbPassword;
     }
+
+    @Override
+    public String toString() {
+        return "JdbcPojo{" +
+                "dbUrl='" + dbUrl + '\'' +
+                ", dbDriver='" + dbDriver + '\'' +
+                ", dbUsername='" + dbUsername + '\'' +
+                ", dbPassword='" + dbPassword + '\'' +
+                '}';
+    }
 }

@@ -2,11 +2,12 @@ package coding.job;
 
 
 import coding.db.JdbcPojo;
+import coding.db.JdbcUtil;
+import coding.db.TableInfo;
+import coding.freemarker.FreemarkerUtil;
 
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.*;
 
 /**
  * Created by zhangyu on 2017/11/5.
@@ -16,14 +17,14 @@ public class SHJob extends Job{
 
     public SHJob(JdbcPojo jdbcPojo) {
         super(jdbcPojo);
+        jdbcPojo.toString();
     }
 
     @Override
     public void execJob() throws SQLException {
         super.execJob();
-        DatabaseMetaData metaData=super.connection.getMetaData();
-        ResultSet tableRet = metaData.getTables(null, "%","%",new String[]{"TABLE"});
-        while(tableRet.next())
-            System.out.println(tableRet.getString("TABLE_NAME"));
+        List<TableInfo> tableInfo=JdbcUtil.getTableInfos(super.connection);
+        //生成pojo
+        FreemarkerUtil.processTemplate("test.flt",null,null);
     }
 }
