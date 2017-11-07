@@ -40,6 +40,17 @@ public class JdbcUtil {
         return tables;
     }
 
+    public static Map<String,TableInfo> getTablesInfo(Connection connection) throws SQLException {
+        Map<String,TableInfo> tablesInfo=new HashMap<String, TableInfo>();
+        List<TableInfo> tableInfos= JdbcUtil.getTableInfos(connection);
+        if(tableInfos!=null && tableInfos.size()>0){
+            for(TableInfo tableInfo:tableInfos){
+                tablesInfo.put(tableInfo.getTableName(),tableInfo);
+            }
+        }
+        return tablesInfo;
+    }
+
     /**
      * 获取列信息
      * @param connection

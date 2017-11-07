@@ -1,6 +1,7 @@
 package coding.freemarker;
 
 import coding.conf.Config;
+import coding.service.Task;
 import freemarker.template.*;
 
 import java.io.*;
@@ -38,4 +39,5 @@ public class FreemarkerUtil {
             e.printStackTrace();
         }
     }
+
 }
