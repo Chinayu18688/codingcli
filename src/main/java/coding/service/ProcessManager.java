@@ -24,7 +24,11 @@ public class ProcessManager {
         if(template!=null){
             task=new Task(packagePath,template,fileName);
         }else{
-            throw new TemplateException("Template does not exist");
+            Template temp=new Template();
+            temp.setName(templateName);
+            //temp.setPath("/Volumes/BANQ/freemakerDir/");
+            task=new Task("/Volumes/BANQ/freemakerDir/"+packagePath,temp,fileName);
+            //throw new TemplateException("Template does not exist");
         }
         return task;
     }

@@ -7,6 +7,7 @@ import java.util.List;
  * Created by 宇 on 2017/11/6.
  */
 public class TableInfo {
+
     private String tableName;
     private String tableCat;//表类别
     private String tableSchem;//表的模式
@@ -14,6 +15,7 @@ public class TableInfo {
     private String remarks;//表的解释性注释
     private String selfReferencingColName;//表的指定 "identifier" 列的名称
     private String refGeneration;//指定在 SELF_REFERENCING_COL_NAME 中创建值的方式。这些值为 "SYSTEM"、"USER" 和 "DERIVED"
+    private String pkColumnName;//主键名称
     private List<ColumnInfo> columnInfos;
 
     public String getTableName() {
@@ -64,6 +66,14 @@ public class TableInfo {
         this.selfReferencingColName = selfReferencingColName;
     }
 
+    public String getPkColumnName() {
+        return pkColumnName;
+    }
+
+    public void setPkColumnName(String pkColumnName) {
+        this.pkColumnName = pkColumnName;
+    }
+
     public String getRefGeneration() {
         return refGeneration;
     }
@@ -90,6 +100,8 @@ public class TableInfo {
                 ", remarks='" + remarks + '\'' +
                 ", selfReferencingColName='" + selfReferencingColName + '\'' +
                 ", refGeneration='" + refGeneration + '\'' +
+                ", pkColumnName='" + pkColumnName + '\'' +
+                ", columnInfos=" + columnInfos +
                 '}';
     }
 }

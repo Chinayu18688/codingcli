@@ -39,6 +39,31 @@ public class StringUril {
         return null;
     }
 
+    /**
+     * 驼峰命名发首字母大写
+     * @param str
+     * @param delimiter
+     * @return
+     */
+    public static String camelCaseFirstUpper(String str,String delimiter){
+        if(str!=null && delimiter!=null){
+            String[] names=str.split(delimiter);
+            if(names != null && names.length > 0){
+                if(names.length==1){
+                    return names[0].toLowerCase();
+                }else{
+                    StringBuffer sbf=new StringBuffer();
+                    for(int i=0;i<names.length;i++){
+                        String tmpNamePart=names[i].toUpperCase().substring(0,1)+names[i].toLowerCase().substring(1);
+                        sbf.append(tmpNamePart);
+                    }
+                    return sbf.toString();
+                }
+            }
+        }
+        return null;
+    }
+
 
     public static String normalCase(String camelCaseStr,String delimiter){
         Matcher matcher = Pattern.compile("[A-Z]").matcher(camelCaseStr);

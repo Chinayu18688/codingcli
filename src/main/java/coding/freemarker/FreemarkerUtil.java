@@ -25,6 +25,7 @@ public class FreemarkerUtil {
             }else{
                 templatePath= Config.confs.get("template_path");//获取默认模版地址
             }
+            templatePath= Config.confs.get("template_path");//获取默认模版地址
             File f=new File(templatePath);
             configInstall();
             config.setDirectoryForTemplateLoading(f);

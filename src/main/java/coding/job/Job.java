@@ -74,7 +74,7 @@ public abstract class Job implements UDFreemarker{
                 FreemarkerUtil.processTemplate(
                         task.getTemplate().getName(),
                         task.getTemplate().getPath(),
-                        task.getOutputPath(),root);
+                        task.getOutputPath()+task.getOutputFileName(),root);
             }
         }else{
             System.out.println("No task end execution was found");

@@ -7,6 +7,7 @@ import coding.db.JdbcUtil;
 import coding.db.TableInfo;
 import coding.exception.TemplateException;
 import coding.freemarker.FreemarkerUtil;
+import coding.freemarker.StringUril;
 import coding.service.ProcessManager;
 import coding.service.Task;
 
@@ -27,34 +28,28 @@ public class SHJob extends Job{
     @Override
     public void execJob() throws Exception {
         super.execJob();
-
-        //生成pojo
-
     }
 
     @Override
     public Map<String, Object> outputParams()  {
         Map<String,Object> root=new HashMap<String, Object>();
-        root.put("package","com.buc.epg");
-        root.put("modal","user");
-        root.put("className",super.tablesInfo.get(0).getTableName());
-        List<String> columns=new ArrayList<String>();
-        for(ColumnInfo columnInfo:super.tablesInfo.get(0).getColumnInfos()){
-            columns.add(columnInfo.getColumnName());
-        }
-        root.put("columnList",columns);
-        root.put("upperTableName",super.tablesInfo.get(0).getTableName().toUpperCase());
-
-        return null;
+        root.put("package","com.buc.gamemust.game");
+        TableInfo tableInfo=super.tablesInfo.get("user");
+        root.put("table",tableInfo);
+        root.put("className", StringUril.camelCaseFirstUpper(tableInfo.getTableName(),"_"));
+        List<ColumnInfo> columns=tableInfo.getColumnInfos();
+        root.put("columnsList",columns);
+        root.put("tableName",tableInfo.getTableName().toUpperCase());
+        return root;
     }
 
     @Override
     public List<Task> setTask() throws Exception{
         List<Task> tasks=new ArrayList<Task>();
-        Task task1=ProcessManager.matchTemplate("com.buc.gamemust.game","TGame.java","sh-entity.ftl");
-        Task task2=ProcessManager.matchTemplate("com.buc.gamemust.game","Game.java","sh-pojo.ftl");
+        Task task1=ProcessManager.matchTemplate("com/buc/gamemust/game/","TGame.java","sh-entity.ftl");
+        //Task task2=ProcessManager.matchTemplate("com.buc.gamemust.game","Game.java","sh-pojo.ftl");
         tasks.add(task1);
-        tasks.add(task2);
+        //tasks.add(task2);
         return tasks;
     }
 }

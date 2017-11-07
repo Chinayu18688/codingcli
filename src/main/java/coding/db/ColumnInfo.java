@@ -4,10 +4,12 @@ package coding.db;
  * Created by 宇 on 2017/11/6.
  */
 public class ColumnInfo {
+
     private String columnName;
     private String TypeName;
     private int columnSize;
     private int nullAble;
+    private String pemark;//列说明
     private String pkName;//主键的名称
     private Short keySeq;//主键中的序列号（值 1 表示主键中的第一列，值 2 表示主键中的第二列）
 
@@ -57,6 +59,14 @@ public class ColumnInfo {
 
     public void setKeySeq(Short keySeq) {
         this.keySeq = keySeq;
+    }
+
+    public String getPemark() {
+        return pemark;
+    }
+
+    public void setPemark(String pemark) {
+        this.pemark = pemark;
     }
 
     @Override
