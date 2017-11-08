@@ -35,7 +35,7 @@ public class CliServer
     public CliServer() {}
 
     public static void main( String[] args ) throws Exception {
-        System.out.println( "欢迎使用java web代码快速生成器" );
+        System.out.println( "Welcome to use java web code quick generator" );
         if(args!=null && args.length>0){
             for(int i=0;i<args.length;i++){
                 String arg=args[i];
@@ -72,7 +72,7 @@ public class CliServer
                             }
                         }
                         else{
-                            System.out.println("无法解析 错误参数名："+arg);
+                            System.out.println("Unable to parse the error parameter name："+arg);
                             throw new ConfigException("Unable to parse the error parameter name " +arg);
                         }
                     }
@@ -81,10 +81,10 @@ public class CliServer
             }
         }
         //参数中要配置架构信息
-        jdbcPojo.setDbUrl("jdbc:mysql://localhost:3306/test");
+        jdbcPojo.setDbUrl("jdbc:mysql://192.168.4.106:3306/test");
         jdbcPojo.setDbDriver("com.mysql.jdbc.Driver");
         jdbcPojo.setDbUsername("root");
-        jdbcPojo.setDbPassword("123456");
+        jdbcPojo.setDbPassword("1234");
         Job job=new SHJob(jdbcPojo);
         job.initializationJob();
 
@@ -102,11 +102,11 @@ public class CliServer
     protected static boolean assertParams(int index,String... args) throws ConfigException {
         if(index+1 >= args.length){
             //数组下标越界 最后一个命令未设置参数
-            System.out.println("命令未找到参数:"+args[index]);
+            System.out.println("Command not found parameters:"+args[index]);
             throw new ConfigException("Command not found parameters "+args[index]);
         }else{
             if(isCommand(args[index+1])){
-                System.out.println("命令未找到参数:"+args[index]);
+                System.out.println("Command not found parameters:"+args[index]);
                 throw new ConfigException("Command not found parameters "+args[index]);
             }else{
                 return true;

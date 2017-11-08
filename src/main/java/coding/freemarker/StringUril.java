@@ -50,7 +50,7 @@ public class StringUril {
             String[] names=str.split(delimiter);
             if(names != null && names.length > 0){
                 if(names.length==1){
-                    return names[0].toLowerCase();
+                    return names[0].toUpperCase().substring(0,1)+names[0].toLowerCase().substring(1);
                 }else{
                     StringBuffer sbf=new StringBuffer();
                     for(int i=0;i<names.length;i++){

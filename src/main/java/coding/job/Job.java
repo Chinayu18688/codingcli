@@ -4,6 +4,7 @@ import coding.db.JdbcPojo;
 import coding.db.JdbcUtil;
 import coding.db.TableInfo;
 import coding.exception.TemplateException;
+import coding.freemarker.function.*;
 import coding.freemarker.FreemarkerUtil;
 import coding.service.Task;
 import java.sql.*;
@@ -92,6 +93,16 @@ public abstract class Job implements UDFreemarker{
     public Map<String, Object> outputParams() throws Exception {
         System.out.println("开始设置参数模板使用的参数...");
         return null;
+    }
+
+    public Map<String,Object> plusDefalutFunction(Map<String,Object> root){
+        root.put("upperColumnName",new UpperColumnNameMethod());
+        root.put("camelColumnName",new CamelColumnNameMethod());
+        root.put("camelFirstUpper",new CamelFirstUpperMethod());
+        root.put("upperCase",new UpperCaseMethod());
+        root.put("lowerCase", new LowerCaseMethod());
+        root.put("camelCase",new CamelCaseMethod());
+        return root;
     }
 
     /**

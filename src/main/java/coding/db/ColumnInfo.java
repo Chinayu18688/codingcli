@@ -76,6 +76,7 @@ public class ColumnInfo {
                 ", TypeName='" + TypeName + '\'' +
                 ", columnSize=" + columnSize +
                 ", nullAble=" + nullAble +
+                ", pemark='" + pemark + '\'' +
                 ", pkName='" + pkName + '\'' +
                 ", keySeq=" + keySeq +
                 '}';
